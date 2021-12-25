@@ -1,4 +1,8 @@
 class Game < ApplicationRecord
   belongs_to :user
-  attachment :image
+
+
+  validates :title, presence: true
+  validates :genre, presence: true
+  validates :detail, presence: true
 end

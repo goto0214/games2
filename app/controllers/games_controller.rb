@@ -7,15 +7,20 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @create = Game.new
     @user = @game.user
+    @create = Game.new
   end
 
   def create
     @game = Game.new(game_params)
     @game.user_id = current_user.id
-    @game.save
-    redirect_to game_path(@game)
+    if @game.save
+      redirect_to game_path(@game)
+    else
+      @user = current_user
+      @games = Game.all
+      render :index
+    end
   end
 
   def edit
@@ -29,7 +34,6 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.user_id = current_user
     @game.update(game_params)
     redirect_to game_path(@game)
   end

@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :games, dependent: :destroy
   attachment :profile_image
+
+  validates :name, presence: true
+  validates :introduction, length: { maximum: 50 }
 end
