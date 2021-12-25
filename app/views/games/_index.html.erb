@@ -1,0 +1,32 @@
+<table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Genle</th>
+            <th>Detail</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% games.each do |game| %>
+          <tr>
+            <td class="col-2">
+              <%= link_to user_path(game.user) do %>
+                <%= attachment_image_tag game.user, :profile_image, fallback: "no_image.jpg", size: "60x60" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to game.title, game_path(game) %>
+            </td>
+            <td>
+              <%= game.genre %>
+            </td>
+            <td>
+              <%= game.detail %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
