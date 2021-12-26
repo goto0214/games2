@@ -9,6 +9,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @user = @game.user
     @create = Game.new
+    @post_comment = PostComment.new
   end
 
   def create

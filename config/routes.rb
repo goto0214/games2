@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :show, :update]
   resources :games, only: [:index, :show, :create, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
   end
 end
