@@ -24,7 +24,16 @@
                 <%= user.name %>
               </td>
               <td>
-                <%= link_to "Show", user_path(user) %>
+                <%= link_to "詳細", user_path(user) %>
+              </td>
+              <td>
+              <% if current_user != user %>
+                <% if current_user.following?(user) %>
+                  <%= link_to "フォローを外す", user_relationship_path(user.id, current_user), method: :delete, class: "btn-sm btn-danger fas fa-user-minus" %>
+                <% else %>
+                  <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn-sm btn-success fas fa-user-plus" %>
+                <% end %>
+              <% end %>
               </td>
             </tr>
           <% end %>

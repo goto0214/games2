@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   #ユーザーをフォローする
   def follow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+    follower.create(followed_id: user_id)
   end
 
   #ユーザーのフォローを外す
@@ -23,8 +23,8 @@ class User < ApplicationRecord
   end
 
   #フォローしていればtrueを返す
-  def folloowing?(user)
-    folloowing_user.include?(user)
+  def following?(user)
+    following_user.include?(user)
   end
 
   attachment :profile_image
