@@ -29,7 +29,7 @@
             <td>
               <% if game.favorited_by?(current_user) %>
                 <p>
-                  <%= link_to game_favorites_path(game), method: :delete do %>
+                  <%= link_to game_favorites_path(game), method: :delete, class: "text-danger" do %>
                     ♥<%= game.favorites.count %>
                   <% end %>
                 </p>
